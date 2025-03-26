@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Approval</title>
+</head>
+<body style="background: url('https://images.unsplash.com/photo-1625225233840-695456021cde?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center/cover; height: 100vh; margin: 0; display: flex; justify-content: center; align-items: center; color: black;">
+
+  <form action="/predict" method="post" style="text-align: center; padding: 30px; border-radius: 10px; width: 400px;">
+    <h1 style="margin-bottom: 20px; font-size: 36px;">Loan Approval</h1>
+
+    <label style="font-size: 20px;">Applicant Income:</label>
+    <input type="text" name="ApplicantIncome" placeholder="Enter value" required style="width: 100%; height: 30px; margin-bottom: 15px;" /><br>
+
+    <label style="font-size: 20px;">Married:</label>
+    <select name="Married" required style="width: 100%; height: 30px; margin-bottom: 15px;">
+      <option value="0">No (0)</option>
+      <option value="1">Yes (1)</option>
+    </select><br>
+
+    <label style="font-size: 20px;">Education:</label>
+    <select name="Education" required style="width: 100%; height: 30px; margin-bottom: 15px;">
+      <option value="0">Not Graduate(0)</option>
+      <option value="1">Graduate (1)</option>
+    </select><br>
+
+    <label style="font-size: 20px;">Self Employed:</label>
+    <select name="Self Employed" required style="width: 100%; height: 30px; margin-bottom: 15px;">
+      <option value="0">No (0)</option>
+      <option value="1">Yes (1)</option>
+    </select><br>
+
+    <label style="font-size: 20px;">Coapplicant Income:</label>
+    <input type="text" name="CoapplicantIncome" placeholder="Enter value" required style="width: 100%; height: 30px; margin-bottom: 15px;" /><br>
+
+    <label style="font-size: 20px;">Loan Amount:</label>
+    <input type="text" name="LoanAmount" placeholder="Enter value" required style="width: 100%; height: 30px; margin-bottom: 15px;" /><br>
+
+    <label style="font-size: 20px;">Loan Amount Term:</label>
+    <input type="text" name="Loan_Amount_Term" placeholder="Enter value" required style="width: 100%; height: 30px; margin-bottom: 15px;" /><br>
+
+    <label style="font-size: 20px;">Credit History:</label>
+    <input type="text" name="Credit_History" placeholder="Enter value" required style="width: 100%; height: 30px; margin-bottom: 15px;" /><br>
+
+    <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 5px; font-size: 18px;">Predict</button>
+  </form>
+
+  {% if prediction_text %}
+    <h2 style="text-align: center; color: {% if 'approved' in prediction_text.lower() %}green{% else %}red{% endif %};">{{ prediction_text }}</h2>
+  {% endif %}
+
+</body>
+</html>
